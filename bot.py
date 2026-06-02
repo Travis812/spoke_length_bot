@@ -39,8 +39,7 @@ def parse_quick_input(text, mode='symmetric'):
     
     try:
         if mode == 'symmetric':
-            # Ожидаем 6 чисел: Диаметр втулки
-(в месте отверстий спиц), Диаметр обода, вылет, Число спиц, Число крестов, Смещение (расст. между окружнос-тями ниппелей спиц разных сторон)
+            # Ожидаем 6 чисел: фланец, обод, вылет, спицы, кресты, смещение
             if len(parts) != 6:
                 return None
             return {
@@ -52,8 +51,7 @@ def parse_quick_input(text, mode='symmetric'):
                 'rim_offset': float(parts[5])
             }
         else:  # asymmetric
-            # Ожидаем 7 чисел: Диаметр втулки
-(в месте отверстий спиц), Диаметр обода, левый_вылет, правый_вылет, Число спиц, Число крестов, Смещение (расст. между окружнос-тями ниппелей спиц разных сторон)
+            # Ожидаем 7 чисел: фланец, обод, левый_вылет, правый_вылет, спицы, кресты, смещение
             if len(parts) != 7:
                 return None
             return {
@@ -73,8 +71,8 @@ async def show_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("📏 Симметричный расчёт", callback_data='symmetric')],
         [InlineKeyboardButton("🔄 Разные стороны", callback_data='asymmetric')],
-        [InlineKeyboardButton("⚡ Быстрый Симметричный расчёт (6 чисел)", callback_data='quick_symmetric')],
-        [InlineKeyboardButton("⚡ Быстрый Разные стороны (7 чисел)", callback_data='quick_asymmetric')],
+        [InlineKeyboardButton("⚡ Быстрый ввод (6 чисел)", callback_data='quick_symmetric')],
+        [InlineKeyboardButton("⚡ Быстрый ввод (7 чисел)", callback_data='quick_asymmetric')],
         [InlineKeyboardButton("📖 Справка", callback_data='help')],
         [InlineKeyboardButton("🔧 Пример", callback_data='example')]
     ]
